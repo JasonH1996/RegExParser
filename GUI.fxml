@@ -25,7 +25,7 @@
                               <Font name="System Italic" size="12.0" />
                            </font>
                         </Label>
-                        <Button id="anybutton" layoutX="214.0" layoutY="14.0" text="ANY" />
+                        <Button id="anybutton" layoutX="214.0" layoutY="14.0" text="ANY" onAction="Any" />
                         <Button id="casesensebutton" layoutX="18.0" layoutY="79.0" text="CASE SENSITIVE" />
                         <Button id="caseinsensebutton" layoutX="130.0" layoutY="79.0" text="CASE INSENSITIVE" />
                         <Button id="orbutton" layoutX="167.0" layoutY="14.0" text="OR" />
@@ -39,7 +39,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="225.0" prefWidth="258.0">
                      <children>
-                        <Button id="browsebutton" layoutX="102.0" layoutY="46.0" prefWidth="55.0" text="Browse" onAction="#Browser"/>
+                        <Button id="browsebutton" layoutX="102.0" layoutY="46.0" prefWidth="55.0" text="Browse" onAction="#Browser" />
                         <Label layoutX="79.0" layoutY="19.0" prefHeight="27.0" prefWidth="101.0" text="Select A Text File!" />
                         <Label layoutX="11.0" layoutY="176.0" text="Write text for the query here, piece by piece!" />
                         <TextField id="fullquery" layoutX="11.0" layoutY="88.0" prefHeight="25.0" prefWidth="237.0" />
@@ -47,19 +47,19 @@
                         <Label layoutX="37.0" layoutY="113.0" text="Your RegEx query will appear here!" />
                         <Label layoutX="16.0" layoutY="130.0" text="You can edit the query manually if needed." />
                         <Label layoutX="22.0" layoutY="203.0" text="This can be parts of a word or sequence." />
-                        <Button id="addbutton" layoutX="201.0" layoutY="151.0" text="ADD" />
+                        <Button id="addbutton" layoutX="201.0" layoutY="151.0" text="ADD" onAction="#Adder" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutY="453.0" prefHeight="205.0" prefWidth="256.0">
                      <children>
-                        <Button id="searchbutton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="23.0" layoutY="25.0" prefHeight="85.0" prefWidth="214.0" text="SEARCH" textAlignment="CENTER" textOverrun="CLIP">
+                        <Button id="searchbutton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="23.0" layoutY="25.0" prefHeight="85.0" prefWidth="214.0" text="SEARCH" textAlignment="CENTER" onAction="#Searcher">
                            <font>
                               <Font name="Segoe UI Bold" size="41.0" />
                            </font>
                         </Button>
-                        <Button id="exfilebutton" layoutX="68.0" layoutY="118.0" text="LOAD EXAMPLE FILE" />
-                        <Button id="exsearchbutton" layoutX="57.0" layoutY="145.0" text="LOAD EXAMPLE SEARCH" />
-                        <Button id="cheatsheetbutton" layoutX="69.0" layoutY="172.0" text="LOAD CHEAT SHEET" />
+                        <Button id="exfilebutton" layoutX="68.0" layoutY="118.0" text="LOAD EXAMPLE FILE" onAction="ExFileFetch" />
+                        <Button id="exsearchbutton" layoutX="57.0" layoutY="145.0" text="LOAD EXAMPLE SEARCH" onAction="ExSearchFetch" />
+                        <Button id="cheatsheetbutton" layoutX="69.0" layoutY="172.0" text="LOAD CHEAT SHEET" onAction="CheatSheetLoader" />
                      </children>
                   </AnchorPane>
           </children>
