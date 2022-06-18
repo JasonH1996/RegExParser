@@ -1,0 +1,33 @@
+Query results appear here!!
+
+Buttons are used to simplify search functions.
+If some of them are used while the composer is empty, then it will be applied to the full query instead.
+
+CHEAT SHEET EXAMPLES
+
+(?i) = case sensitivity active
+
+(abc) = abc
+(a|b|c) = a OR b OR c
+[abc] = a OR b OR c
+
+(?!a|b|c) = NOT a OR b OR c
+[^abc] = NOT a OR b OR c
+(?!abc) = NOT abc
+
+\d = any single number
+\D = any single NON-number
+
+y{x} = y occurs x number of times
+
+\ = allows a special character
+\. = returns "."
+\* = returns "*"
+
+^abc = line starts with abc
+abc$ = line ends with abc
+
+b(?=a)  = find where b is followed by a
+(?<=a)b = find where b is preceded by a
+b(?!a)  = find where b is not followed by a
+(?<!a)b = find where b is not preceded by a
