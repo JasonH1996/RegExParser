@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox id="appbox" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <SplitPane dividerPositions="0.2, 0.6" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
@@ -16,7 +16,7 @@
           <children>
                   <AnchorPane layoutY="230.0" prefHeight="232.0" prefWidth="258.0">
                      <children>
-                        <Button id="0ormorebutton" layoutX="75.0" layoutY="47.0" text="0 or More of" />
+                        <Button id="0ormorebutton" layoutX="75.0" layoutY="47.0" text="0 or More of" focusTraversable="false" />
                         <Button id="1ormorebutton" layoutX="171.0" layoutY="47.0" text="1 or More of" />
                         <Button id="ifthenbutton" layoutX="184.0" layoutY="147.0" text="IF, THEN" />
                         <Button id="elsebutton" layoutX="194.0" layoutY="181.0" text="ELSE" />
@@ -26,12 +26,12 @@
                            </font>
                         </Label>
                         <Button id="anybutton" layoutX="214.0" layoutY="14.0" text="ANY" onAction="Any" />
-                        <Button id="casesensebutton" layoutX="18.0" layoutY="79.0" text="CASE SENSITIVE" />
-                        <Button id="caseinsensebutton" layoutX="130.0" layoutY="79.0" text="CASE INSENSITIVE" />
-                        <Button id="orbutton" layoutX="167.0" layoutY="14.0" text="OR" />
-                        <Button id="notbutton" layoutX="63.0" layoutY="14.0" prefHeight="25.0" prefWidth="42.0" text="NOT" />
-                        <Button id="tobutton" layoutX="118.0" layoutY="14.0" prefHeight="25.0" prefWidth="33.0" text="TO" />
-                        <Button id="exactbutton" layoutX="1.0" layoutY="14.0" text="EXACT" />
+                        <Button id="casesensebutton" layoutX="18.0" layoutY="79.0" text="CASE SENSITIVE" onAction="CaseSensitive" />
+                        <Button id="caseinsensebutton" layoutX="130.0" layoutY="79.0" text="CASE INSENSITIVE" onAction="CaseInsensitive" />
+                        <Button id="orbutton" layoutX="167.0" layoutY="14.0" text="OR" onAction="Or" />
+                        <Button id="notbutton" layoutX="63.0" layoutY="14.0" prefHeight="25.0" prefWidth="42.0" text="NOT" onAction="Not" />
+                        <Button id="tobutton" layoutX="118.0" layoutY="14.0" prefHeight="25.0" prefWidth="33.0" text="TO" onAction="To" />
+                        <Button id="exactbutton" layoutX="1.0" layoutY="14.0" text="EXACT" onAction="Exact" />
                         <Button id="linestartsbutton" layoutX="130.0" layoutY="111.0" text="LINE STARTS WITH" />
                         <Button id="lineendsbutton" layoutX="14.0" layoutY="111.0" text="LINE ENDS WITH" />
                         <Button id="0or1button" layoutX="1.0" layoutY="47.0" text="0 or 1 of" />
