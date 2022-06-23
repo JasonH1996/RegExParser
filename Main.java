@@ -14,7 +14,8 @@ public class Main extends Application {
         
         try {
             this.primaryStage = primaryStage;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("GUI.fxml"));
             root = loader.load();
             Grep controller = loader.getController();
             controller.setMain(this);
@@ -33,7 +34,7 @@ public class Main extends Application {
     public void startApp() throws Exception {
 
         try {
-            root = FXMLLoader.load(getClass().getResource("/GUI.fxml"));
+            root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
             Scene scene = new Scene(root, 1280, 720);
             primaryStage.setScene(scene);
             primaryStage.show();
