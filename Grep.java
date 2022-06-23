@@ -14,6 +14,7 @@ import java.util.regex.Matcher;
 
 
 public class Grep {
+  private Main main;
   //have to create variables for each of the elements of the UI being interacted with
   boolean do_substring;
   public TextArea filebox;
@@ -372,19 +373,23 @@ public class Grep {
     }
     return br;
   }
-  public static void main ( String [] args ) {
-    Scanner input = new Scanner(System.in);
-    System.out.println("Enter txt file absolute path here: \n");
-    String filename = input.nextLine();
-    String regex=".*\\b(B|[Hh])([a-z]{3}y\\b.*|ee.*)";
+  //public static void main ( String [] args ) {
+   // Scanner input = new Scanner(System.in);
+   // System.out.println("Enter txt file absolute path here: \n");
+   // String filename = input.nextLine();
+   // String regex=".*\\b(B|[Hh])([a-z]{3}y\\b.*|ee.*)";
    // String filename = "beemovie.txt";
     // System.out.println("Enter RegEx search here: \n");
-    System.out.println("RegEx "+regex);
-    System.out.println("File "+filename);
-    System.out.println("Searching... ");
-    Grep g = new Grep(false);
-    BufferedReader br = g.getReader(filename);
-    g.fileSearch(regex,br);
-    input.close();
+   // System.out.println("RegEx "+regex);
+  //  System.out.println("File "+filename);
+   // System.out.println("Searching... ");
+  //  Grep g = new Grep(false);
+  //  BufferedReader br = g.getReader(filename);
+   // g.fileSearch(regex,br);
+   // input.close();
+  //}
+
+  void setMain(Main main) {
+    this.main = main;
   }
 }
