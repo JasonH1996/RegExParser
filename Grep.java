@@ -190,6 +190,8 @@ public class Grep {
     }
   }
 
+
+  
   //methods for the query assembly buttons
 
   public void Any() {
