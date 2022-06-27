@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollBar?>
@@ -7,8 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<VBox id="appbox" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="appBox" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <SplitPane dividerPositions="0.2, 0.6" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
@@ -16,64 +16,62 @@
           <children>
                   <AnchorPane layoutY="230.0" prefHeight="232.0" prefWidth="258.0">
                      <children>
-                        <Button id="0ormorebutton" layoutX="75.0" layoutY="47.0" text="0 or More of" focusTraversable="false" />
-                        <Button id="1ormorebutton" layoutX="171.0" layoutY="47.0" text="1 or More of" />
-                        <Button id="ifthenbutton" layoutX="184.0" layoutY="147.0" text="IF, THEN" />
-                        <Button id="elsebutton" layoutX="194.0" layoutY="181.0" text="ELSE" />
+                        <button fx:id="0ormorebutton" layoutX="75.0" layoutY="47.0" text="0 or More of"  />
+                        <button fx:id="1ormorebutton" layoutX="171.0" layoutY="47.0" text="1 or More of" />
+                        <button fx:id="ifthenbutton" layoutX="184.0" layoutY="147.0" text="IF, THEN" />
+                        <button fx:id="elsebutton" layoutX="194.0" layoutY="181.0" text="ELSE" />
                         <Label layoutX="14.0" layoutY="133.0" prefHeight="85.0" prefWidth="163.0" text="IF, THEN wraps the current composition in the IF portion and prepares THEN for input. ELSE is optional." wrapText="true">
                            <font>
                               <Font name="System Italic" size="12.0" />
                            </font>
                         </Label>
-                        <Button id="anybutton" layoutX="214.0" layoutY="14.0" text="ANY" onAction="Any" />
-                        <Button id="casesensebutton" layoutX="18.0" layoutY="79.0" text="CASE SENSITIVE" onAction="CaseSensitive" />
-                        <Button id="caseinsensebutton" layoutX="130.0" layoutY="79.0" text="CASE INSENSITIVE" onAction="CaseInsensitive" />
-                        <Button id="orbutton" layoutX="167.0" layoutY="14.0" text="OR" onAction="Or" />
-                        <Button id="notbutton" layoutX="63.0" layoutY="14.0" prefHeight="25.0" prefWidth="42.0" text="NOT" onAction="Not" />
-                        <Button id="tobutton" layoutX="118.0" layoutY="14.0" prefHeight="25.0" prefWidth="33.0" text="TO" onAction="To" />
-                        <Button id="exactbutton" layoutX="1.0" layoutY="14.0" text="EXACT" onAction="Exact" />
-                        <Button id="linestartsbutton" layoutX="130.0" layoutY="111.0" text="LINE STARTS WITH" />
-                        <Button id="lineendsbutton" layoutX="14.0" layoutY="111.0" text="LINE ENDS WITH" />
-                        <Button id="0or1button" layoutX="1.0" layoutY="47.0" text="0 or 1 of" />
+                        <button fx:id="anybutton" layoutX="214.0" layoutY="14.0" text="ANY" onAction="#Any" />
+                        <button fx:id="casesensebutton" layoutX="18.0" layoutY="79.0" text="CASE SENSITIVE" onAction="#CaseSensitive" />
+                        <button fx:id="caseinsensebutton" layoutX="130.0" layoutY="79.0" text="CASE INSENSITIVE" onAction="#CaseInsensitive" />
+                        <button fx:id="orbutton" layoutX="167.0" layoutY="14.0" text="OR" onAction="#Or" />
+                        <button fx:id="notbutton" layoutX="63.0" layoutY="14.0" prefHeight="25.0" prefWidth="42.0" text="NOT" onAction="#Not" />
+                        <button fx:id="tobutton" layoutX="118.0" layoutY="14.0" prefHeight="25.0" prefWidth="33.0" text="TO" onAction="#To" />
+                        <button fx:id="exactbutton" layoutX="1.0" layoutY="14.0" text="EXACT" onAction="#Exact" />
+                        <button fx:id="linestartsbutton" layoutX="130.0" layoutY="111.0" text="LINE STARTS WITH" />
+                        <button fx:id="lineendsbutton" layoutX="14.0" layoutY="111.0" text="LINE ENDS WITH" />
+                        <button fx:id="0or1button" layoutX="1.0" layoutY="47.0" text="0 or 1 of" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="1.0" layoutY="1.0" prefHeight="225.0" prefWidth="258.0">
                      <children>
-                        <Button id="browsebutton" layoutX="102.0" layoutY="46.0" prefWidth="55.0" text="Browse" onAction="#Browser" />
+                        <button fx:id="browsebutton" layoutX="102.0" layoutY="46.0" prefWidth="55.0" text="Browse" onAction="#Browser" />
                         <Label layoutX="79.0" layoutY="19.0" prefHeight="27.0" prefWidth="101.0" text="Select A Text File!" />
                         <Label layoutX="11.0" layoutY="176.0" text="Write text for the query here, piece by piece!" />
-                        <TextField id="fullquery" layoutX="11.0" layoutY="88.0" prefHeight="25.0" prefWidth="237.0" />
-                        <TextField id="querycomposer" layoutX="21.0" layoutY="151.0" prefHeight="25.0" prefWidth="163.0" />
+                        <TextField fx:id="fullquery" layoutX="11.0" layoutY="88.0" prefHeight="25.0" prefWidth="237.0" />
+                        <TextField fx:id="querycomposer" layoutX="21.0" layoutY="151.0" prefHeight="25.0" prefWidth="163.0" />
                         <Label layoutX="37.0" layoutY="113.0" text="Your RegEx query will appear here!" />
                         <Label layoutX="16.0" layoutY="130.0" text="You can edit the query manually if needed." />
                         <Label layoutX="22.0" layoutY="203.0" text="This can be parts of a word or sequence." />
-                        <Button id="addbutton" layoutX="201.0" layoutY="151.0" text="ADD" onAction="#Adder" />
+                        <button fx:id="addbutton" layoutX="201.0" layoutY="151.0" text="ADD" onAction="#Adder" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutY="453.0" prefHeight="205.0" prefWidth="256.0">
                      <children>
-                        <Button id="searchbutton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="23.0" layoutY="25.0" prefHeight="85.0" prefWidth="214.0" text="SEARCH" textAlignment="CENTER" onAction="#Searcher">
+                        <button fx:id="searchbutton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="23.0" layoutY="25.0" prefHeight="85.0" prefWidth="214.0" text="SEARCH" textAlignment="CENTER" onAction="#Searcher">
                            <font>
                               <Font name="Segoe UI Bold" size="41.0" />
                            </font>
                         </Button>
-                        <Button id="exfilebutton" layoutX="68.0" layoutY="118.0" text="LOAD EXAMPLE FILE" onAction="ExFileFetch" />
-                        <Button id="exsearchbutton" layoutX="57.0" layoutY="145.0" text="LOAD EXAMPLE SEARCH" onAction="ExSearchFetch" />
-                        <Button id="cheatsheetbutton" layoutX="69.0" layoutY="172.0" text="LOAD CHEAT SHEET" onAction="CheatSheetLoader" />
+                        <button fx:id="exfilebutton" layoutX="68.0" layoutY="118.0" text="LOAD EXAMPLE FILE" onAction="#ExFileFetch" />
+                        <button fx:id="exsearchbutton" layoutX="57.0" layoutY="145.0" text="LOAD EXAMPLE SEARCH" onAction="#ExSearchFetch" />
+                        <button fx:id="cheatsheetbutton" layoutX="69.0" layoutY="172.0" text="LOAD CHEAT SHEET" onAction="#CheatSheetLoader" />
                      </children>
                   </AnchorPane>
           </children>
         </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TextArea id="filebox" layoutX="77.0" layoutY="66.0" prefHeight="658.0" prefWidth="354.0" promptText="Text File Content Appears Here!" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <ScrollBar layoutX="1.0" layoutY="100.0" orientation="VERTICAL" prefHeight="658.0" prefWidth="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="488.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea fx:id="filebox" editable="false" layoutX="77.0" layoutY="66.0" prefHeight="658.0" prefWidth="354.0" promptText="Text File Content Appears Here!" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TextArea id="resultbox" layoutY="100.0" prefHeight="658.0" prefWidth="410.0" promptText="Query Results Appear Here!" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <ScrollBar layoutX="491.0" layoutY="248.0" orientation="VERTICAL" prefHeight="718.0" prefWidth="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="491.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea fx:id="resultbox" editable="false" layoutY="100.0" prefHeight="658.0" prefWidth="410.0" promptText="Query Results Appear Here!" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
       </items>

@@ -1,28 +1,37 @@
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Pattern;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
 import java.util.regex.Matcher;
 
 
 public class Grep {
+  @FXML 
+  public VBox appBox;
   private Main main;
   //have to create variables for each of the elements of the UI being interacted with
   boolean do_substring;
   public TextArea filebox;
   public TextArea resultbox;
-  public File selectedFile = null;
+  public File selectedFile;
   public TextField fullquery;
   public TextField querycomposer;
   public TextField fTextField;
+  public String filename;
   
   //methods for various core UI functions
 
@@ -30,15 +39,17 @@ public class Grep {
     JFileChooser fc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
     int returnValue = fc.showOpenDialog(null);
     filebox.setText("");
+    filebox.setWrapText(true);
     if (returnValue == JFileChooser.APPROVE_OPTION){
       selectedFile = fc.getSelectedFile();
       System.out.println("Test: File chosen is " + selectedFile.getAbsolutePath());
-      
+      filename = selectedFile.getAbsolutePath();
       try{
-      BufferedReader br = new BufferedReader(new FileReader(selectedFile));
+      BufferedReader br = new BufferedReader(new FileReader(filename));
       String fileline;
       while ((fileline = br.readLine()) != null){
-        filebox.appendText(fileline);
+        filebox.appendText(fileline + "\r\n");
+        
       }
       br.close();
       }
@@ -50,9 +61,12 @@ public class Grep {
   }
 
   public void Searcher() {
-    Grep g = new Grep(false);
-    BufferedReader br = g.getReader(filebox.getText());
-    g.fileSearch(fullquery.getText(),br);
+    try {
+      fileSearch();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
     //filesearch method takes care of the printing of matches.
   }
 
@@ -66,13 +80,14 @@ public class Grep {
   }
 
   public void ExFileFetch() {
-    String filename = "beemovie.txt";
+    filename = "RegExParser/beemovie.txt";
     filebox.setText("");
+    filebox.setWrapText(true);
     try{
       BufferedReader br = new BufferedReader(new FileReader(filename));
       String fileline;
       while ((fileline = br.readLine()) != null){
-        filebox.appendText(fileline);
+        filebox.appendText(fileline + "\r\n");
       }
       br.close();
       }
@@ -82,13 +97,14 @@ public class Grep {
   }
 
   public void CheatSheetLoader() {
-    String filename = "cheatsheet.txt";
+    String filename = "RegExParser/cheatsheet.txt";
     resultbox.setText("");
+    resultbox.setWrapText(true);
     try{
       BufferedReader br = new BufferedReader(new FileReader(filename));
       String fileline;
       while ((fileline = br.readLine()) != null){
-        resultbox.appendText(fileline);
+        resultbox.appendText(fileline + "\r\n");
       }
       br.close();
       }
@@ -140,7 +156,7 @@ public class Grep {
       //splits query based on cursor position
 
         String regex = "\\((?!.*\\)";
-        Pattern re = Pattern.compile(regex);
+        Pattern re = Pattern.compile(Pattern.quote(regex));
           Matcher matcher = re.matcher(front);
           if (do_substring && matcher.find() ||
               !do_substring && matcher.matches()) {
@@ -331,65 +347,58 @@ public class Grep {
 
   //methods for the actual searching functionality
 
-  public Grep(boolean support_substring) {
-    this.do_substring=support_substring;
-  }
-  
-  public int fileSearch(String regex, BufferedReader br) {
-    int count = 0;
-    resultbox.setText("");
-    try {
-      String oneline="";
-      Pattern re = Pattern.compile(regex);
-      while ((oneline=br.readLine())!=null) {
-
-        Matcher matcher = re.matcher(oneline);
-        if (do_substring && matcher.find() ||
-            !do_substring && matcher.matches()) {
-          //System.out.println(oneline);
-          resultbox.appendText(oneline + "\n");
-          count++;
-        }
-      }
-    } catch (Exception e) {
-      resultbox.setText("Problem reading file.");
-      System.exit(3);
-    }
-    resultbox.appendText("\n" + count + " lines matching your search.");
-    return count;
-  }
-  
-  public BufferedReader getReader(String filename) {
-    File file = new File(filename);
-    BufferedReader br=null;
-    try {
-      FileInputStream is = new FileInputStream(file);
-      InputStreamReader isr = new InputStreamReader(is);
-      br = new BufferedReader(isr);
-    } catch (Exception e) {
-      System.err.println("Cannot open file.");
-      System.exit(2);
-      
-    }
-    return br;
-  }
-  //public static void main ( String [] args ) {
-   // Scanner input = new Scanner(System.in);
-   // System.out.println("Enter txt file absolute path here: \n");
-   // String filename = input.nextLine();
-   // String regex=".*\\b(B|[Hh])([a-z]{3}y\\b.*|ee.*)";
-   // String filename = "beemovie.txt";
-    // System.out.println("Enter RegEx search here: \n");
-   // System.out.println("RegEx "+regex);
-  //  System.out.println("File "+filename);
-   // System.out.println("Searching... ");
-  //  Grep g = new Grep(false);
-  //  BufferedReader br = g.getReader(filename);
-   // g.fileSearch(regex,br);
-   // input.close();
+  //public Grep(boolean support_substring) {
+  //  this.do_substring=support_substring;
   //}
+  
+  
+
+  public Grep() {
+}
+
+public void fileSearch() {
+    resultbox.setText("");
+    resultbox.setWrapText(true);
+    int count = 0;
+    String regex = fullquery.getText();
+    System.out.print(regex);
+      Pattern re = Pattern.compile(regex);
+      Matcher matcher = re.matcher(filebox.getText());
+      while (matcher.find()) {
+        resultbox.appendText(matcher.group() + "\r\n");
+        count++;
+      }
+      resultbox.appendText("\r\n" + count + " matches.");
+  }
+
+  public void buttonListener() {
+
+
+    AtomicInteger caretPos = new AtomicInteger();
+    .caretPositionProperty().addListener((obs, oldVal, newVal) -> {
+        if (input.isFocused()) {
+            caretPos.set(newVal.intValue());
+        }
+    });
+
+    insertInfinity.setOnAction(e -> {
+        int pos = caretPos.get();
+        input.insertText(pos, "∞");
+        input.requestFocus();
+        input.positionCaret(pos+1);
+    });
+    
+    appBox.getChildren().addAll(input, insertInfinity);
+  }
+
+  public void fieldListener() {
+
+  }
 
   void setMain(Main main) {
     this.main = main;
+
+
+
   }
 }
