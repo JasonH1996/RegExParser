@@ -1,0 +1,74 @@
+Query results appear here!!
+
+Buttons are used to simplify search functions.
+If some of them are used while the composer is empty, then it will be applied to the full query instead.
+
+NOTE: MODIFY FILE SEARCH TO REPLACE \ WITH \\ IN THE QUERY BEFORE SEARCHING. 
+
+INSTRUCTIONS
+
+EXACT: This means "Exactly this series of characters". It establishes a literal sequence with /Q and /E. This means that everything after /Q and before /E is used exactly as typed for the search. Functions *cannot* be used in a literal sequence.
+
+NOT: This means "Not this sequence of characters". This starts a "not" operation using ^; the ^ character MUST be at the start of a sequence wrapped in parentheses.
+
+TO: This means, for example, any letter between and including a to e, or 0 to 325. It takes either your caret position or a selected text, and gets either the first letter, or the entire most recent number.
+
+OR: This means "This OR this." It takes either your caret position, or selected text. If there is no selected text, then it will insert (|) and place the caret after the first parentheses. If text is selected, it will put the first parentheses behind it, put |) after, then move the caret between the | and ) characters. If caret/selection is already within parentheses, it will just insert a | character.
+
+ANY: This represents single instance character except a newline. Places a period.
+
+*0/1 of: This means "This sequence/character once or not at all". Places a question mark.
+
+*0+ of: This means "This sequence/character 0 or more times". Places an asterisk.
+
+*1+ of: This means "This sequence/character 1 or more times". Places a plus sign. 
+
+*n+ of: This means "This sequence/character exactly n times", where n is a number you enter, in between {} characters. You can also use {n,} for "n or more times" or {n,m} for "n to m times".
+
+CASE SENSITIVE: This means "The following sequence is case sensitive". Activates case sensitivity mode by inputting (?i:), which is on by default.
+
+CASE INSENSITIVE: This means "The following sequence is case insensitive". Activates case sensitivity mode by inputting (?-i:), which is off by default.
+
+LINE STARTS WITH: This means "Line starts at this point." This is done by inputting a ^ character, which cannot be done as the first character within parentheses; in those cases, the button will insert the ^ outside the parentheses.
+
+LINE ENDS WITH: This means "Line ends at this point." This is done by inputting a $ character; this should be done at the end of a search in most cases, unless followed by a newline character, "(\r\n|\r|\n)"
+
+IF, THEN: 
+
+ELSE: 
+
+* If used after a parentheses, applies for that entire sequence. If placed after another character, applies for that single character. 
+
+
+
+CHEAT SHEET EXAMPLES
+
+(?i) = case sensitivity active
+
+(abc) = abc
+(a|b|c) = a OR b OR c
+[abc] = a OR b OR c
+
+(?!a|b|c) = NOT a OR b OR c  <--- this is what is used by the program
+[^abc] = NOT a OR b OR c
+(?!abc) = NOT abc
+
+\d = any single number
+\D = any single NON-number
+
+y{x} = y occurs x number of times
+
+\ = allows a special character
+\. = returns "."
+\* = returns "*"
+
+^abc = line starts with abc
+abc$ = line ends with abc
+
+b(?=a)  = find where b is followed by a
+(?<=a)b = find where b is preceded by a
+b(?!a)  = find where b is not followed by a
+(?<!a)b = find where b is not preceded by a
+
+Example Search returns lines that a word that starts with a capital B or 
+an H/h(case insensitive), has any three characters following, then ends with y. 
