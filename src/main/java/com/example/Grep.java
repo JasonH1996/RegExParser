@@ -1,4 +1,4 @@
-package src.main.java.com.example;
+package com.example;
 
 import java.io.*;
 import java.util.*;
@@ -84,7 +84,7 @@ public class Grep {
     filebox.setText("");
     filebox.setWrapText(true);
     try{
-      BufferedReader br = new BufferedReader(new FileReader(filename));
+      BufferedReader br = new BufferedReader(new InputStreamReader(Grep.class.getResourceAsStream(filename)));
       String fileline;
       while ((fileline = br.readLine()) != null){
         filebox.appendText(fileline + "\r\n");
@@ -97,11 +97,11 @@ public class Grep {
   }
 
   public void CheatSheetLoader() {
-    filename = "cheatsheet.txt";
+    filename = "/cheatsheet.txt";
     resultbox.setText("");
     resultbox.setWrapText(true);
     try{
-      BufferedReader br = new BufferedReader(new FileReader(filename));
+      BufferedReader br = new BufferedReader(new InputStreamReader(Grep.class.getResourceAsStream(filename)));
       String fileline;
       while ((fileline = br.readLine()) != null){
         resultbox.appendText(fileline + "\r\n");

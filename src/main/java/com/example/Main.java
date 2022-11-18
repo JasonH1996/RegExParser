@@ -1,4 +1,4 @@
-package src.main.java.com.example;
+package com.example;
 
 import javafx.application.Application;
 import javafx.scene.Parent;
